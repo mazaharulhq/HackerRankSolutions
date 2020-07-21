@@ -1,0 +1,60 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+public class Solution {
+
+    // Complete the dayOfProgrammer function below.
+    static String dayOfProgrammer(int year) {
+    	
+    	int Jan=31,Mar=31,Apr=30,May=31,Jun=30,Jul=31,Aug=31,Sep=30,Oct=31,Nov=30,Dec31;
+    	int Feb=28;
+    	
+    	if(year>=1919)
+    	{
+    		if(year%400==0||(year%4==0&&year%100!=0))
+        	{
+        		Feb=29;
+        	}
+        	
+    		
+    	}
+    	else if(year==1918)
+    	{
+    		Feb=15;
+    	}
+    	else if(year>=1700&&year<1917)
+    	{
+    		if(year%4==0)
+        	{
+        		Feb=29;
+        	}
+        	
+    	}
+    	
+    	int days=Jan+Feb+Mar+Apr+May+Jun+Jul+Aug;
+    	//System.out.println(256-days+"."+"09"+"."+year);
+    	
+    	return 256-days+"."+"09"+"."+year;
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        int year = Integer.parseInt(bufferedReader.readLine().trim());
+
+        String result = dayOfProgrammer(year);
+
+     System.out.println(result);
+
+        bufferedReader.close();
+    }
+}
